@@ -1,0 +1,32 @@
+.bigtable {
+  max-height: 300px;
+  overflow-y: scroll;
+  margin: 150px 300px;
+  border: 1px solid grey;
+}
+.th {
+  position: sticky;
+  top: 0;
+  background-color: white;
+}
+.border {
+  border: 1px solid grey;
+}
+.asd {
+  padding-left: 2%;
+}
+.qwe {
+  padding-left: 10%;
+}
+.zxc {
+  padding-left: 3%;
+}
+.rfv {
+  padding-left: 9%;
+}
+.edit_sticy {
+  margin-left: 30%;
+}
+.pli {
+  margin-left: 27%;
+}
