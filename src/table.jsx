@@ -97,6 +97,7 @@ class Students extends React.Component {
       let res = this.state.g6.filter((v) => v.id !== id);
       this.setState({ g6: res });
     };
+    const onEdit = () => {};
     const onAdd = () => {
       let user = {
         id: this.state.g6.length + 1,
@@ -105,7 +106,7 @@ class Students extends React.Component {
         job: this.state.job,
       };
       this.setState({
-        g6: [...this.state.g6,user ],
+        g6: [...this.state.g6, user],
         name: "",
         age: "",
         job: "",
@@ -113,7 +114,9 @@ class Students extends React.Component {
     };
     return (
       <div>
-        <input
+        <div className="bigtable">
+        <div className="inputs">
+     <input
           value={this.state.name}
           className="input"
           type="text"
@@ -133,7 +136,7 @@ class Students extends React.Component {
           name="job"
         />
         <button onClick={onAdd}>add</button>
-        <div className="bigtable">
+     </div>
           <table className="table" width={"90%"}>
             <thead className="fixed-tr">
               <tr className="fixed-tr">
@@ -159,7 +162,12 @@ class Students extends React.Component {
                       </button>
                     </td>
                     <td>
-                      <button className="edit_sticy">edit</button>
+                      <button
+                        onClick={() => onEdit({ name, age, job })}
+                        className="edit_sticy"
+                      >
+                        edit
+                      </button>
                     </td>
                   </tr>
                 );

@@ -30,3 +30,14 @@
 .pli {
   margin-left: 27%;
 }
+.inputs{
+  display: flex;
+  gap: 25px;
+  justify-content: center;
+  margin: 5px 0;
+}
+input{
+  border: none;
+  border-bottom: 1px solid rgb(172, 165, 165);
+  border-radius: 2px;
+}
