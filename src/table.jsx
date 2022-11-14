@@ -87,7 +87,7 @@ class Students extends React.Component {
               </tr>
             </thead>
             <tbody className="tbody">
-              {this.state.data.map((st,index) => {
+              {this.state.data.map((st, index) => {
                 return (
                   <tr key={st.id}>
                     <td className="asd id-sticky">{st.id}</td>
@@ -100,10 +100,7 @@ class Students extends React.Component {
                       </button>
                     </td>
                     <td>
-                      <button
-                     onClick={onEdit(st.id)}
-                        className="edit_sticy"
-                      >
+                      <button onClick={onEdit(st.id)} className="edit_sticy">
                         edit
                       </button>
                     </td>
