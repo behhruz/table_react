@@ -13,6 +13,7 @@
   border: 1px solid grey;
 }
 .asd {
+  
   padding-left: 2%;
 }
 .qwe {
@@ -40,7 +41,7 @@ input{
   border: none;
   border-bottom: 1px solid rgb(172, 165, 165);
   border-radius: 3px;
-  width: 110px;
+  width: 111px;
 }
 .inp{
 width: 150px;

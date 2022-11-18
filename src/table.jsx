@@ -10,6 +10,7 @@ class Students extends React.Component {
       name: "",
       age: "",
       job: "",
+      selected: {},
     };
   }
   render() {
@@ -19,7 +20,28 @@ class Students extends React.Component {
       this.setState({ data: res });
     };
     // edit function
-    const onEdit = () => {};
+    const onEdit = (value) => {
+      this.setState({ selected: value });
+    };
+
+    const onCancel = (value) => {
+      this.setState({ selected: null });
+    };
+
+    const onSave = (value) => {
+      let res = this.state.data.map((value) =>
+        this.state.selected?.id === value.id ? this.state.selected : value
+      );
+      this.setState({ data: res, selected: null });
+    };
+
+    const onChangeName = ({ target: { value } }) => {
+      this.setState((state) => {
+        return {
+          selected: { ...state.selected, name: value, age: value, job: value },
+        };
+      });
+    };
 
     // search function
     const filter = ({ target: { value } }) => {
@@ -64,8 +86,9 @@ class Students extends React.Component {
             <input
               onChange={onChangeInput}
               type="text"
-              placeholder="job"
               name="job"
+              placeholder="job"
+             
             />
             <button onClick={onAdd}>add</button>
             <input
@@ -88,22 +111,44 @@ class Students extends React.Component {
             </thead>
             <tbody className="tbody">
               {this.state.data.map((st, index) => {
+                let check = this.state.selected?.id === st.id;
                 return (
                   <tr key={st.id}>
                     <td className="asd id-sticky">{st.id}</td>
-                    <td className="qwe">{st.name}</td>
-                    <td className="zxc">{st.age}</td>
-                    <td className="rfv">{st.job}</td>
-                    <td>
-                      <button onClick={() => onDelete(st.id)} className="pli">
-                        delete
-                      </button>
-                    </td>
-                    <td>
-                      <button onClick={onEdit(st.id)} className="edit_sticy">
-                        edit
-                      </button>
-                    </td>
+                    <td className="qwe">{check ? <input /> : st.name}</td>
+                    <td className="zxc">{check ? <input /> : st.age}</td>
+                    <td className="rfv">{check ? <input /> : st.job}</td>
+
+                    {check ? (
+                      <>
+                        <td>
+                          <button
+                            onClick={() => onCancel(st.id)}
+                            className="pli"
+                          >
+                            cancel
+                          </button>
+                        </td>
+                        <td>
+                          <button
+                            onClick={onSave(st.id)}
+                            className="edit_sticy"
+                          >
+                            save
+                          </button>
+                        </td>
+                      </>
+                    ) : (
+                      <>
+                        {" "}
+                        <button onClick={() => onDelete(st.id)} className="pli">
+                          delete
+                        </button>
+                        <button onClick={onEdit(st.id)} className="edit_sticy">
+                          edit
+                        </button>
+                      </>
+                    )}
                   </tr>
                 );
               })}
